@@ -1,0 +1,59 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?languageCode=/%5cfuzz389&model=/%5cfuzz390&userAgent=/%5cfuzz391&utm_medium=/%5cfuzz392&utm_campaign=/%5cfuzz393&utm_content=/%5cfuzz394&trackingCode=/%5cfuzz395&session=/%5cfuzz396&timestamp=/%5cfuzz397&nonce=/%5cfuzz398&hash=/%5cfuzz399&grant_type=/%5cfuzz400&client_secret=/%5cfuzz401&realm=/%5cfuzz402&resource=/%5cfuzz403&preload=/%5cfuzz404&async=/%5cfuzz405&autoplay=/%5cfuzz406&control=/%5cfuzz407&controls=/%5cfuzz408&href=/%5cfuzz409&start=/%5cfuzz410&end=/%5cfuzz411&frameborder=/%5cfuzz412&referrer-policy=/%5cfuzz413&url=https://FUZZ_URL"    
+      - "{{BaseURL}}/?property=/%5cfuzz414&itemprop=/%5cfuzz415&datatype=/%5cfuzz416&about=/%5cfuzz417&typeof=/%5cfuzz418&hreflang=/%5cfuzz419&xmlns=/%5cfuzz420&placeholder=/%5cfuzz421&request_id=/%5cfuzz422&resource_url=/%5cfuzz423&contextType=/%5cfuzz424&challenge_url=/%5cfuzz425&linguagem=/%5cfuzz426&idCanal=/%5cfuzz427&channel=/%5cfuzz428&uf=/%5cfuzz429&target_id=/%5cfuzz430&manufacturer=/%5cfuzz431&t=/%5cfuzz432&scale=/%5cfuzz433&jsessionid=/%5cfuzz434&load=/%5cfuzz435&forward=/%5cfuzz436&userAction=/%5cfuzz437&ssoToken=/%5cfuzz438&SSO_token=/%5cfuzz439&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?securitytext=/%5cfuzz440&panel=/%5cfuzz441&subscrptionId=/%5cfuzz442&promocode=/%5cfuzz443&ordertype=/%5cfuzz444&reg=/%5cfuzz445&sms=/%5cfuzz446&user_in=/%5cfuzz447&item=/%5cfuzz448&license_number=/%5cfuzz449&originalurl=/%5cfuzz450&formid=/%5cfuzz451&reg_ip=/%5cfuzz452&thumbnail=/%5cfuzz453&arrival=/%5cfuzz454&meeting_id=/%5cfuzz455&internal=/%5cfuzz456&ColumnId=/%5cfuzz457&culture=/%5cfuzz458&cflang=/%5cfuzz459&filter_by=/%5cfuzz460&sourceid=/%5cfuzz461&sourceapp=/%5cfuzz462&pageurl=/%5cfuzz463&page_url=/%5cfuzz464&stream=/%5cfuzz465&url=https://FUZZ_URL"      
+      - "{{BaseURL}}/?ping=/%5cfuzz466&execution=/%5cfuzz467&location_id=/%5cfuzz468&RootFolder=/%5cfuzz469&root=/%5cfuzz470&click=/%5cfuzz471&ctag=/%5cfuzz472&messageid=/%5cfuzz473&message_id=/%5cfuzz474&queryinput=/%5cfuzz475&order_id=/%5cfuzz476&keyword=/%5cfuzz477&appId=/%5cfuzz478&api=/%5cfuzz479&releaseid=/%5cfuzz480&relay=/%5cfuzz481&root_id=/%5cfuzz482&unknown=/%5cfuzz483&auth_req=/%5cfuzz484&search_geolocation=/%5cfuzz485&params=/%5cfuzz486&persons=/%5cfuzz487&person=/%5cfuzz488&search_request=/%5cfuzz489&d=/%5cfuzz490&url=https://FUZZ_URL"    
+      - "{{BaseURL}}/?purchases=/%5cfuzz491&widget=/%5cfuzz492&targetUrl=/%5cfuzz493&public=/%5cfuzz494&requestUrl=/%5cfuzz495&redirect_back=/%5cfuzz496&ListId=/%5cfuzz497&module=/%5cfuzz498&PageNum=/%5cfuzz499&option=/%5cfuzz500&CustomerID=/%5cfuzz501&company_id=/%5cfuzz502&login_link=/%5cfuzz503&keys=/%5cfuzz504&paymentType=/%5cfuzz505&errorcode=/%5cfuzz506&courseCode=/%5cfuzz507&post_type=/%5cfuzz508&send_to=/%5cfuzz509&refid=/%5cfuzz510&vouchercode=/%5cfuzz511&os_destination=/%5cfuzz512&redirected-from=/%5cfuzz513&return_to_url=/%5cfuzz514&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?storeId=/%5cfuzz515&catalogId=/%5cfuzz516&langId=/%5cfuzz517&pageView=/%5cfuzz518&orderBy=/%5cfuzz519&homePageURL=/%5cfuzz520&absoluteURL=/%5cfuzz521&DirectoryPath=/%5cfuzz522&environment=/%5cfuzz523&shopUserId=/%5cfuzz524&agnt=/%5cfuzz525&pixel=/%5cfuzz526&partner=/%5cfuzz527&partner_id=/%5cfuzz528&cashback=/%5cfuzz529&lang_id=/%5cfuzz530&page_type=/%5cfuzz531&reg-type=/%5cfuzz532&account_name=/%5cfuzz533&market=/%5cfuzz534&site_id=/%5cfuzz535&campaignid=/%5cfuzz536&creative=/%5cfuzz537&matchtype=/%5cfuzz538&url=https://FUZZ_URL" 
+      - "{{BaseURL}}/?targetid=/%5cfuzz539&available=/%5cfuzz540&modules=/%5cfuzz541&reset=/%5cfuzz542&ids=/%5cfuzz543&userEmail=/%5cfuzz544&cm=/%5cfuzz545&friend=/%5cfuzz546&contract=/%5cfuzz547&online=/%5cfuzz548&route=/%5cfuzz549&routes=/%5cfuzz550&IP=/%5cfuzz551&trader=/%5cfuzz552&mobile=/%5cfuzz553&review_id=/%5cfuzz554&back_url=/%5cfuzz555&amount=/%5cfuzz556&filetype=/%5cfuzz557&search_type=/%5cfuzz558&step=/%5cfuzz559&order_by=/%5cfuzz560&feed=/%5cfuzz561&transaction_id=/%5cfuzz561&memory=/%5cfuzz562&ClientId=/%5cfuzz563&referralCode=/%5cfuzz563&url=https://FUZZ_URL"          
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'                 
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
