@@ -1,0 +1,56 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?changeTo=https://fuzz188&os=https://fuzz189&ver=https://fuzz190&SAMLRequest=https://fuzz191&uuid=https://fuzz192&config=https://fuzz193&linkId=https://fuzz194&client_id=https://fuzz195&locale=https://fuzz196&view_type=https://fuzz197&qualify=https://fuzz198&googleID=https://fuzz199&campaign=https://fuzz200&status=https://fuzz201&service=https://fuzz202&class=https://fuzz203&crop=https://fuzz204&application=https://fuzz205&uri=https://fuzz206&report=https://fuzz207&event_name=https://fuzz208&debug=https://fuzz209&tipo=https://fuzz210&strData=https://fuzz211&pagina=https://fuzz212&idHome=https://fuzz213&sleep=https://fuzz214&account=https://fuzz215&token=XSS&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?prefix=https://fuzz216&oauth=https://fuzz217&mail=https://fuzz218&index=https://fuzz219&authorize=https://fuzz220&tokenID=https://fuzz221&scope=https://fuzz222&response_type=https://fuzz223&onclick=https://fuzz224&form=https://fuzz225&position=https://fuzz226&json=https://fuzz227&jsonp=https://fuzz228&cron=https://fuzz229&account_id=https://fuzz230&accountID=https://fuzz231&display=https://fuzz232&_csrf=https://fuzz233&csrf=https://fuzz234&signup=https://fuzz235&signout=https://fuzz236&logoff=https://fuzz237&public=https://fuzz238&footer=https://fuzz239&header=https://fuzz240&contact=https://fuzz241&setup=https://fuzz242&migration=https://fuzz243&token=XSS&url=https://FUZZ_URL" 
+      - "{{BaseURL}}/?features=https://fuzz244&feature=https://fuzz245&chains=https://fuzz246&chain=https://fuzz247&info=https://fuzz248&into=https://fuzz249&app_id=https://fuzz250&release=https://fuzz251&request=https://fuzz252&alert=https://fuzz253&notice=https://fuzz254&notification=https://fuzz255&warning=https://fuzz256&success=https://fuzz257&feedback=https://fuzz258&prompt=https://fuzz259&modal=https://fuzz260&popup=https://fuzz261&pop=https://fuzz262&toast=https://fuzz263&banner=https://fuzz264&announcement=https://fuzz265&note=https://fuzz266&hint=https://fuzz267&confirmation=https://fuzz268&result=https://fuzz269&update=https://fuzz270&response=https://fuzz271&token=XSS&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?dialog=https://fuzz272&box=https://fuzz273&commentary=https://fuzz274&statement=https://fuzz275&commentary=https://fuzz276&explanation=https://fuzz277&guideline=https://fuzz278&tip=https://fuzz279&instruction=https://fuzz280&pointer=https://fuzz281&suggestion=https://fuzz282&direction=https://fuzz283&advisory=https://fuzz284&remark=https://fuzz285&notation=https://fuzz286&output=https://fuzz287&outcome=https://fuzz288&reflection=https://fuzz289&label=https://fuzz290&mensagem=https://fuzz291&texto=https://fuzz292&conteudo=https://fuzz293&payload=https://fuzz294&aviso=https://fuzz295&alerta=https://fuzz296&notificacao=https://fuzz297&token=XSS&url=https://FUZZ_URL"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'         
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
