@@ -1,0 +1,69 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/https://fuzz-URI"     
+      - "{{BaseURL}}//fuzz-URI"           
+      - "{{BaseURL}}/%5cfuzz-URI"                 
+      - "{{BaseURL}}//%5cfuzz-URI"                 
+      - "{{BaseURL}}/%5cfuzz-URI/"
+      - "{{BaseURL}}//%5cfuzz-URI/"                 
+      - "{{BaseURL}}//https://fuzz-URI"        
+      - "{{BaseURL}}////https://fuzz-URI"                  
+      - "{{BaseURL}}////fuzz-URI"                 
+      - "{{BaseURL}}/%0A/https://fuzz-URI"                  
+      - "{{BaseURL}}/%0a/fuzz-URI"                 
+      - "{{BaseURL}}/%0A%5chttps://fuzz-URI"                        
+      - "{{BaseURL}}/%0D/https://fuzz-URI"                   
+      - "{{BaseURL}}/%0D%5chttps://fuzz-URI"               
+      - "{{BaseURL}}/<>/https://fuzz-URI"                        
+      - "{{BaseURL}}/%5chttps://fuzz-URI"     
+      - "{{BaseURL}}/%5chttps://fuzz-URI/%2f.."           
+      - "{{BaseURL}}/%5cfuzz-URI/%2f.."               
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'                   
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
