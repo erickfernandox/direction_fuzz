@@ -1,0 +1,56 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?instrucao=https://fuzz298&comunicado=https://fuzz299erromsg=https://fuzz300&sucesso=https://fuzz301&btn=https://fuzz302&button=https://fuzz303&leight=https://fuzz304&host=https://fuzz305&domain=https://fuzz306&http=https://fuzz307&subdomain=https://fuzz308&server=https://fuzz309&origin=https://fuzz310&ip=https://fuzz311&protocol=https://fuzz312&gateway=https://fuzz313&site=https://fuzz314&platform=https://fuzz315&language=https://fuzz316&encode=https://fuzz317&scheme=https://fuzz318&consulta=https://fuzz319&submit=https://fuzz320&method=https://fuzz321&data-id=https://fuzz322&authType=https://fuzz323&isRegister=https://fuzz324&loginRequestId=https://fuzz325&url=https://FUZZ_URL"      
+      - "{{BaseURL}}/?client=https://fuzz336&filename=https://fuzz337&ext=https://fuzz338&external=https://fuzz339&utm_source=https://fuzz340&visibility=https://fuzz341&season=https://fuzz342&monitor=https://fuzz343&Itemid=https://fuzz344&promo=https://fuzz345&category=https://fuzz346&subscribe=FuZZ347&unsubscribe=https://fuzz348&unsubscribe_token=https://fuzz349&event=https://fuzz350&local=https://fuzz351&brand=https://fuzz352&kind=https://fuzz353&department=https://fuzz354&product=https://fuzz355&product_id=https://fuzz356&productId=https://fuzz357&zipcode=https://fuzz358&day=https://fuzz359&phone=https://fuzz360&cc=https://fuzz361&command=https://fuzz362&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?querystring=https://fuzz363&charset=https://fuzz364&currency=https://fuzz365&device=https://fuzz366&browser=https://fuzz367&access_token=https://fuzz368&age=https://fuzz369&firstname=https://fuzz370&lastname=https://fuzz371&sobrenome=https://fuzz372&address=https://fuzz373&role=https://fuzz374&color=https://fuzz375&quantity=https://fuzz376&price=https://fuzz377&discount=https://fuzz378&rating=https://fuzz379&location=https://fuzz380&startDate=https://fuzz381&endDate=https://fuzz382&sessionID=https://fuzz383&oauthToken=https://fuzz384&errorURL=https://fuzz385&proxy=https://fuzz386&radius=https://fuzz387&callbackUrl=https://fuzz388&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?languageCode=https://fuzz389&model=https://fuzz390&userAgent=https://fuzz391&utm_medium=https://fuzz392&utm_campaign=https://fuzz393&utm_content=https://fuzz394&trackingCode=https://fuzz395&session=https://fuzz396&timestamp=https://fuzz397&nonce=https://fuzz398&hash=https://fuzz399&grant_type=https://fuzz400&client_secret=https://fuzz401&realm=https://fuzz402&resource=https://fuzz403&preload=https://fuzz404&async=https://fuzz405&autoplay=https://fuzz406&control=https://fuzz407&controls=https://fuzz408&href=https://fuzz409&start=https://fuzz410&end=https://fuzz411&frameborder=https://fuzz412&referrer-policy=https://fuzz413&url=https://FUZZ_URL"    
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'        
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
