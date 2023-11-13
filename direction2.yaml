@@ -1,0 +1,54 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?ads=https://fuzz99&img=https://fuzz100&gclid=https://fuzz101&plan=https://fuzz102&conta=https://fuzz103&_id=https://fuzz104mgs=https://fuzz105&price=https://fuzz106&v=https://fuzz107&pag=https://fuzz108&feed=https://fuzz109&n=https://fuzz110&ids=https://fuzz111&origem=https://fuzz112&group=https://fuzz113&cat=https://fuzz114&preview=https://fuzz115&nome=https://fuzz116&from=https://fuzz117&fileId=https://fuzz118&err=https://fuzz119&page_id=https://fuzz120&region=https://fuzz121&order=https://fuzz122&id_url=https://fuzz123&nav=https://fuzz124&by=https://fuzz125&pg=https://fuzz126&admin=https://fuzz127&api_key=https://fuzz128&configUrl=https://fuzz129&baseUrl=https://fuzz130&shortUrl=https://fuzz131&token=XSS&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?mode=https://fuzz132&foto=https://fuzz133&photo=https://fuzz134&msisdn=https://fuzz135&pagid=https://fuzz136&country=https://fuzz137&city=https://fuzz138&state=https://fuzz139&recommendationId=https://fuzz140&limit=https://fuzz141&profile=https://fuzz142&signature=https://fuzz143&stage=https://fuzz144&share=https://fuzz145&accessCode=https://fuzz146&gid=https://fuzz147&galerie=https://fuzz148&include=https://fuzz149&source=https://fuzz150&filter=https://fuzz151&data_url=https://fuzz152&cookie=https://fuzz153&videoId=https://fuzz154&slug=https://fuzz155&resize=https://fuzz156&w=https://fuzz157&h=https://fuzz157&nextPage=https://fuzz158&tab=https://fuzz159&token=XSS&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?size=https://fuzz160&cache=https://fuzz161&APIKey=https://fuzz162&random=https://fuzz163&alt=https://fuzz164&teamid=https://fuzz165&folder=https://fuzz166&registrationId=https://fuzz167&src=https://fuzz168&courseId=https://fuzz169&rebuild=https://fuzz170&r=https://fuzz171&endpoint=https://fuzz172&siteID=https://fuzz173&year=https://fuzz174&typeId=https://fuzz175&idpartner=https://fuzz176&receiver=https://fuzz177&level=https://fuzz178&fbclid=https://fuzz179&values=https://fuzz180&onSuccess=https://fuzz181&theme=https://fuzz182&user_id=https://fuzz183&userId=https://fuzz184&template=https://fuzz185&version=https://fuzz186&select=https://fuzz187&token=XSS&url=https://FUZZ_URL"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'        
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
