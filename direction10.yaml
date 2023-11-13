@@ -1,0 +1,58 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?operator_id=/%5cfuzz564&network=/%5cfuzz565&product_ids=/%5cfuzz566&csrf_token=/%5cfuzz567&menu_id=/%5cfuzz568&authuser=/%5cfuzz569&section=/%5cfuzz570&faq=/%5cfuzz571&rate=/%5cfuzz572&idsite=/%5cfuzz573&provider=/%5cfuzz574&id_category=/%5cfuzz575&official=/%5cfuzz576&identifier=/%5cfuzz577&check_in=/%5cfuzz578&view_by=/%5cfuzz579&componentID=/%5cfuzz580&validate_token=/%5cfuzz581&val=/%5cfuzz582&invoice=/%5cfuzz583&ticket=/%5cfuzz584&detail=/%5cfuzz585&curtype=/%5cfuzz586&action_type=/%5cfuzz587&uri_path=/%5cfuzz588&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?deadline=/%5cfuzz589&productKey=/%5cfuzz590&bundleId=/%5cfuzz591&searchid=/%5cfuzz592&tracking=/%5cfuzz593&cid=/%5cfuzz594&element_id=/%5cfuzz595&char=/%5cfuzz596&custom=/%5cfuzz596&act=/%5cfuzz597&agent=/%5cfuzz598&shop_id=/%5cfuzz599&otp_type=/%5cfuzz600&otp=/%5cfuzz601&fromUrl=/%5cfuzz602&count=/%5cfuzz603&policy=/%5cfuzz604&expire=/%5cfuzz605&mime_type=/%5cfuzz606&cd=/%5cfuzz607&flag=/%5cfuzz608&url=https://FUZZ_URL"           
+      - "{{BaseURL}}/?collection=/%5cfuzz615&requirements=/%5cfuzz616&param=/%5cfuzz617&contest=/%5cfuzz618&photoId=/%5cfuzz619&fb_action_ids=/%5cfuzz620&highlight=/%5cfuzz621&join=/%5cfuzz622&membertype=/%5cfuzz623&active=/%5cfuzz624&subsection=/%5cfuzz625&release_id=/%5cfuzz626&sound=/%5cfuzz627&track=/%5cfuzz628&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?embed=/%5cfuzz629&jumpTo=/%5cfuzz630&segment=/%5cfuzz631&dateRange=/%5cfuzz632&hex=/%5cfuzz633&base64=/%5cfuzz634&promoID=/%5cfuzz635&promo_id=/%5cfuzz636&eventType=/%5cfuzz637&audio=/%5cfuzz638&video=/%5cfuzz639&pageIndex=/%5cfuzz640&token=XSS&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?play=/%5cfuzz641&brand_id=/%5cfuzz642&edition=/%5cfuzz643&edicao=/%5cfuzz644&fname=/%5cfuzz645&xhr=/%5cfuzz646&sort_by=/%5cfuzz647&agree=/%5cfuzz648&confirm=/%5cfuzz649&character=/%5cfuzz650&apiType=/%5cfuzz651&locale_id=/%5cfuzz652&groupID=/%5cfuzz653&group_id=/%5cfuzz654&tag_id=/%5cfuzz655&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?dnfile=/%5cfuzz656&VideoFile=/%5cfuzz657&memb=/%5cfuzz658&sMode=/%5cfuzz659&hsLang=/%5cfuzz660&Controller=/%5cfuzz661&Model=/%5cfuzz662&View=/%5cfuzz663&updateDt=/%5cfuzz664&dest_url=/%5cfuzz665&origin_url=/%5cfuzz666&ext_url=/%5cfuzz667&tab_id=/%5cfuzz668&user_info=/%5cfuzz669&ref_id=/%5cfuzz670&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?a=//fuzz701&b=//fuzz702&c=//fuzz703&d=//fuzz704&e=//fuzz705&f=//fuzz706&g=//fuzz707&h=//fuzz708&i=//fuzz709&j=//fuzz710&k=//fuzz711&l=//fuzz712&m=//fuzz713&n=//fuzz714&o=//fuzz715&p=//fuzz716&q=//fuzz717&r=//fuzz718&t=//fuzz719&u=//fuzz720&v=//fuzz721&w=//fuzz722&x=//fuzz723&y=//fuzz724&z=//fuzz725"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'                 
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
