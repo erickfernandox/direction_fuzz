@@ -1,0 +1,57 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?property=https://fuzz414&itemprop=https://fuzz415&datatype=https://fuzz416&about=https://fuzz417&typeof=https://fuzz418&hreflang=https://fuzz419&xmlns=https://fuzz420&placeholder=https://fuzz421&request_id=https://fuzz422&resource_url=https://fuzz423&contextType=https://fuzz424&challenge_url=https://fuzz425&linguagem=https://fuzz426&idCanal=https://fuzz427&channel=https://fuzz428&uf=https://fuzz429&target_id=https://fuzz430&manufacturer=https://fuzz431&t=https://fuzz432&scale=https://fuzz433&jsessionid=https://fuzz434&load=https://fuzz435&forward=https://fuzz436&userAction=https://fuzz437&ssoToken=https://fuzz438&SSO_token=https://fuzz439&url=https://FUZZ_URL"     
+      - "{{BaseURL}}/?securitytext=https://fuzz440&panel=https://fuzz441&subscrptionId=https://fuzz442&promocode=https://fuzz443&ordertype=https://fuzz444&reg=https://fuzz445&sms=https://fuzz446&user_in=https://fuzz447&item=https://fuzz448&license_number=https://fuzz449&originalurl=https://fuzz450&formid=https://fuzz451&reg_ip=https://fuzz452&thumbnail=https://fuzz453&arrival=https://fuzz454&meeting_id=https://fuzz455&internal=https://fuzz456&ColumnId=https://fuzz457&culture=https://fuzz458&cflang=https://fuzz459&filter_by=https://fuzz460&sourceid=https://fuzz461&sourceapp=https://fuzz462&pageurl=https://fuzz463&page_url=https://fuzz464&stream=https://fuzz465&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?ping=https://fuzz466&execution=https://fuzz467&location_id=https://fuzz468&RootFolder=https://fuzz469&root=https://fuzz470&click=https://fuzz471&ctag=https://fuzz472&messageid=https://fuzz473&message_id=https://fuzz474&queryinput=https://fuzz475&order_id=https://fuzz476&keyword=https://fuzz477&appId=https://fuzz478&api=https://fuzz479&releaseid=https://fuzz480&relay=https://fuzz481&root_id=https://fuzz482&unknown=https://fuzz483&auth_req=https://fuzz484&search_geolocation=https://fuzz485&params=https://fuzz486&persons=https://fuzz487&person=https://fuzz488&search_request=https://fuzz489&d=https://fuzz490&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?purchases=https://fuzz491&widget=https://fuzz492&targetUrl=https://fuzz493&public=https://fuzz494&requestUrl=https://fuzz495&redirect_back=https://fuzz496&ListId=https://fuzz497&module=https://fuzz498&PageNum=https://fuzz499&option=https://fuzz500&CustomerID=https://fuzz501&company_id=https://fuzz502&login_link=https://fuzz503&keys=https://fuzz504&paymentType=https://fuzz505&errorcode=https://fuzz506&courseCode=https://fuzz507&post_type=https://fuzz508&send_to=https://fuzz509&refid=https://fuzz510&vouchercode=https://fuzz511&os_destination=https://fuzz512&redirected-from=https://fuzz513&return_to_url=https://fuzz514&url=https://FUZZ_URL"
+      - "{{BaseURL}}/?storeId=https://fuzz515&catalogId=https://fuzz516&langId=https://fuzz517&pageView=https://fuzz518&orderBy=https://fuzz519&homePageURL=https://fuzz520&absoluteURL=https://fuzz521&DirectoryPath=https://fuzz522&environment=https://fuzz523&shopUserId=https://fuzz524&agnt=https://fuzz525&pixel=https://fuzz526&partner=https://fuzz527&partner_id=https://fuzz528&cashback=https://fuzz529&lang_id=https://fuzz530&page_type=https://fuzz531&reg-type=https://fuzz532&account_name=https://fuzz533&market=https://fuzz534&site_id=https://fuzz535&campaignid=https://fuzz536&creative=https://fuzz537&matchtype=https://fuzz538&url=https://FUZZ_URL"
+    
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'              
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
