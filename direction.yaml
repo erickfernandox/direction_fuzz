@@ -1,0 +1,67 @@
+id: form-reflect-fuzzer-erickfernandox
+
+info:
+  name: form-reflect-fuzzer
+  author: erickfernandox
+  severity: medium
+  description: |
+    Verifica parametros ocultos que refletem dentro do HTML da pagina
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 2
+  tags: fuzzer, generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?querystring=fuzz363&charset=fuzz364&currency=fuzz365&device=fuzz366&browser=fuzz367&access_token=fuzz368&age=fuzz369&firstname=fuzz370&lastname=fuzz371&sobrenome=fuzz372&address=fuzz373&role=fuzz374&color=fuzz375&quantity=fuzz376&price=fuzz377&discount=fuzz378&rating=fuzz379&location=fuzz380&startDate=fuzz381&endDate=fuzz382&sessionID=fuzz383&oauthToken=fuzz384&errorURL=fuzz385&proxy=fuzz386&radius=fuzz387&callbackUrl=fuzz388&url=fuzz_URL"
+      - "{{BaseURL}}/?languageCode=fuzz389&model=fuzz390&userAgent=fuzz391&utm_medium=fuzz392&utm_campaign=fuzz393&utm_content=fuzz394&trackingCode=fuzz395&session=fuzz396&timestamp=fuzz397&nonce=fuzz398&hash=fuzz399&grant_type=fuzz400&client_secret=fuzz401&realm=fuzz402&resource=fuzz403&preload=fuzz404&async=fuzz405&autoplay=fuzz406&control=fuzz407&controls=fuzz408&href=fuzz409&start=fuzz410&end=fuzz411&frameborder=fuzz412&referrer-policy=fuzz413&url=fuzz_URL"    
+      - "{{BaseURL}}/?property=fuzz414&itemprop=fuzz415&datatype=fuzz416&about=fuzz417&typeof=fuzz418&hreflang=fuzz419&xmlns=fuzz420&placeholder=fuzz421&request_id=fuzz422&resource_url=fuzz423&contextType=fuzz424&challenge_url=fuzz425&linguagem=fuzz426&idCanal=fuzz427&channel=fuzz428&uf=fuzz429&target_id=fuzz430&manufacturer=fuzz431&t=fuzz432&scale=fuzz433&jsessionid=fuzz434&load=fuzz435&forward=fuzz436&userAction=fuzz437&ssoToken=fuzz438&SSO_token=fuzz439&url=fuzz_URL"     
+      - "{{BaseURL}}/?securitytext=fuzz440&panel=fuzz441&subscrptionId=fuzz442&promocode=fuzz443&ordertype=fuzz444&reg=fuzz445&sms=fuzz446&user_in=fuzz447&item=fuzz448&license_number=fuzz449&originalurl=fuzz450&formid=fuzz451&reg_ip=fuzz452&thumbnail=fuzz453&arrival=fuzz454&meeting_id=fuzz455&internal=fuzz456&ColumnId=fuzz457&culture=fuzz458&cflang=fuzz459&filter_by=fuzz460&sourceid=fuzz461&sourceapp=fuzz462&pageurl=fuzz463&page_url=fuzz464&stream=fuzz465&url=fuzz_URL"
+      - "{{BaseURL}}/?ping=fuzz466&execution=fuzz467&location_id=fuzz468&RootFolder=fuzz469&root=fuzz470&click=fuzz471&ctag=fuzz472&messageid=fuzz473&message_id=fuzz474&queryinput=fuzz475&order_id=fuzz476&keyword=fuzz477&appId=fuzz478&api=fuzz479&releaseid=fuzz480&relay=fuzz481&root_id=fuzz482&unknown=fuzz483&auth_req=fuzz484&search_geolocation=fuzz485&params=fuzz486&persons=fuzz487&person=fuzz488&search_request=fuzz489&d=fuzz490&url=fuzz_URL"
+      - "{{BaseURL}}/?purchases=fuzz491&widget=fuzz492&targetUrl=fuzz493&public=fuzz494&requestUrl=fuzz495&redirect_back=fuzz496&ListId=fuzz497&module=fuzz498&PageNum=fuzz499&option=fuzz500&CustomerID=fuzz501&company_id=fuzz502&login_link=fuzz503&keys=fuzz504&paymentType=fuzz505&errorcode=fuzz506&courseCode=fuzz507&post_type=fuzz508&send_to=fuzz509&refid=fuzz510&vouchercode=fuzz511&os_destination=fuzz512&redirected-from=fuzz513&return_to_url=fuzz514&url=fuzz_URL"
+      - "{{BaseURL}}/?storeId=fuzz515&catalogId=fuzz516&langId=fuzz517&pageView=fuzz518&orderBy=fuzz519&homePageURL=fuzz520&absoluteURL=fuzz521&DirectoryPath=fuzz522&environment=fuzz523&shopUserId=fuzz524&agnt=fuzz525&pixel=fuzz526&partner=fuzz527&partner_id=fuzz528&cashback=fuzz529&lang_id=fuzz530&page_type=fuzz531&reg-type=fuzz532&account_name=fuzz533&market=fuzz534&site_id=fuzz535&campaignid=fuzz536&creative=fuzz537&matchtype=fuzz538&url=fuzz_URL"
+      - "{{BaseURL}}/?targetid=fuzz539&available=fuzz540&modules=fuzz541&reset=fuzz542&ids=fuzz543&userEmail=fuzz544&cm=fuzz545&friend=fuzz546&contract=fuzz547&online=fuzz548&route=fuzz549&routes=fuzz550&IP=fuzz551&trader=fuzz552&mobile=fuzz553&review_id=fuzz554&back_url=fuzz555&amount=fuzz556&filetype=fuzz557&search_type=fuzz558&step=fuzz559&order_by=fuzz560&feed=fuzz561&transaction_id=fuzz561&memory=fuzz562&ClientId=fuzz563&referralCode=fuzz563&url=fuzz_URL"
+      - "{{BaseURL}}/?operator_id=fuzz564&network=fuzz565&product_ids=fuzz566&csrf_token=fuzz567&menu_id=fuzz568&authuser=fuzz569&section=fuzz570&faq=fuzz571&rate=fuzz572&idsite=fuzz573&provider=fuzz574&id_category=fuzz575&official=fuzz576&identifier=fuzz577&check_in=fuzz578&view_by=fuzz579&componentID=fuzz580&validate_token=fuzz581&val=fuzz582&invoice=fuzz583&ticket=fuzz584&detail=fuzz585&curtype=fuzz586&action_type=fuzz587&uri_path=fuzz588&url=fuzz_URL"
+      - "{{BaseURL}}/?deadline=fuzz589&productKey=fuzz590&bundleId=fuzz591&searchid=fuzz592&tracking=fuzz593&cid=fuzz594&element_id=fuzz595&char=fuzz596&custom=fuzz596&act=fuzz597&agent=fuzz598&shop_id=fuzz599&otp_type=fuzz600&otp=fuzz601&fromUrl=fuzz602&count=fuzz603&policy=fuzz604&expire=fuzz605&mime_type=fuzz606&cd=fuzz607&flag=fuzz608&url=fuzz_URL" 
+      - "{{BaseURL}}/?collection=fuzz615&requirements=fuzz616&param=fuzz617&contest=fuzz618&photoId=fuzz619&fb_action_ids=fuzz620&highlight=fuzz621&join=fuzz622&membertype=fuzz623&active=fuzz624&subsection=fuzz625&release_id=fuzz626&sound=fuzz627&track=fuzz628&url=fuzz_URL"
+      - "{{BaseURL}}/?embed=fuzz629&jumpTo=fuzz630&segment=fuzz631&dateRange=fuzz632&hex=fuzz633&base64=fuzz634&promoID=fuzz635&promo_id=fuzz636&eventType=fuzz637&audio=fuzz638&video=fuzz639&pageIndex=fuzz640&token=XSS&url=fuzz_URL"
+      - "{{BaseURL}}/?play=fuzz641&brand_id=fuzz642&edition=fuzz643&edicao=fuzz644&fname=fuzz645&xhr=fuzz646&sort_by=fuzz647&agree=fuzz648&confirm=fuzz649&character=fuzz650&apiType=fuzz651&locale_id=fuzz652&groupID=fuzz653&group_id=fuzz654&tag_id=fuzz655&url=fuzz_URL"
+      - "{{BaseURL}}/?dnfile=fuzz656&VideoFile=fuzz657&memb=fuzz658&sMode=fuzz659&hsLang=fuzz660&Controller=fuzz661&Model=fuzz662&View=fuzz663&updateDt=fuzz664&dest_url=fuzz665&origin_url=fuzz666&ext_url=fuzz667&tab_id=fuzz668&user_info=fuzz669&ref_id=fuzz670&url=fuzz_URL"     
+
+          
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:                    
+          - 'src="https://fuzz'            
+          - 'href="https://fuzz'                     
+          - 'action="https://fuzz'                              
+          - 'src="//fuzz'            
+          - 'href="//fuzz'                     
+          - 'action="//fuzz'                  
+          - 'src="/\fuzz'            
+          - 'href="/\fuzz'                     
+          - 'action="/\fuzz'      
+          - 'action="https://FUZZ'                  
+          - 'src="https://FUZZ'            
+          - 'href="https://FUZZ'        
+          
+      - type: status
+        status:
+          - 200
+          - 404
+          - 302
+          - 301
+          - 303
+          - 307
+          - 308
+          - 306          
+          - 500
+          - 403          
+          
+        condition: or
