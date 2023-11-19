@@ -18,6 +18,7 @@ http:
   - method: GET
     path:
       - "{{BaseURL}}/https://fuzz-URI"     
+      - "{{BaseURL}}//://fuzz-URI"     
       - "{{BaseURL}}//fuzz-URI"           
       - "{{BaseURL}}/%5cfuzz-URI"                 
       - "{{BaseURL}}//%5cfuzz-URI"                 
