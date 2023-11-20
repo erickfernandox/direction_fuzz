@@ -47,6 +47,9 @@ http:
           - 'action="https://FUZZ'                  
           - 'src="https://FUZZ'            
           - 'href="https://FUZZ'        
+          - 'action="fuzz'                  
+          - 'src="fuzz'            
+          - 'href="fuzz'              
           
       - type: status
         status:
