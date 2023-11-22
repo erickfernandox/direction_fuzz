@@ -37,8 +37,10 @@ http:
       - "{{BaseURL}}/%5cfuzz-URI/"                       
       - "{{BaseURL}}//%5cfuzz-URI"                 
       - "{{BaseURL}}/%5cfuzz-URI/"
+      - "{{BaseURL}}/%5c/fuzz-URI/"
       - "{{BaseURL}}//%5cfuzz-URI/"                 
       - "{{BaseURL}}//https://fuzz-URI"        
+      - "{{BaseURL}}/%5c/https://fuzz-URI"        
       - "{{BaseURL}}//https://fuzz-URI/%2f.."              
       - "{{BaseURL}}//https://fuzz-URI/"              
       - "{{BaseURL}}////https://fuzz-URI"                  
@@ -48,7 +50,9 @@ http:
       - "{{BaseURL}}//%0A//https://fuzz-URI"           
       - "{{BaseURL}}/%0A/https://fuzz-URI/"                        
       - "{{BaseURL}}/%0a/fuzz-URI"                 
-      - "{{BaseURL}}/%0a/fuzz-URI/%2f.."                 
+      - "{{BaseURL}}/%0a/fuzz-URI/%2f.."       
+      - "{{BaseURL}}/%0a%5c%0a/fuzz-URI/%2f.."                  
+      - "{{BaseURL}}/%0a%5c%0a/fuzz-URI"                 
       - "{{BaseURL}}//%0a//fuzz-URI/"                       
       - "{{BaseURL}}/%0A%5chttps://fuzz-URI"                        
       - "{{BaseURL}}/%0D/https://fuzz-URI"                   
@@ -73,8 +77,11 @@ http:
           - 'action="/\fuzz'      
           - 'action="https://FUZZ'                  
           - 'src="https://FUZZ'            
-          - 'href="https://FUZZ'                   
-          
+          - 'href="https://FUZZ'                
+          - 'href="/\/fuzz'              
+          - 'src="/\/fuzz'            
+          - 'action="/\/fuzz'                
+
       - type: status
         status:
           - 200
