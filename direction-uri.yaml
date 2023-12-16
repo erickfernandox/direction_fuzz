@@ -69,6 +69,8 @@ http:
       - "{{BaseURL}}/%5cfuzz-URI/%2f.."     
       - "{{BaseURL}}/?://X//fuzz-URI"
       - "{{BaseURL}}/?:/%5cX//fuzz-URI"      
+      - "{{BaseURL}}/?:/%5cX/%5cfuzz-URI"     
+      - "{{BaseURL}}/%5c:/%5cfuzz-URI"            
       - "{{BaseURL}}/%5c://fuzz-URL"      
     matchers-condition: and
     matchers:
