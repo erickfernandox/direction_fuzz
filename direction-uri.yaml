@@ -68,6 +68,8 @@ http:
       - "{{BaseURL}}/%5chttps://fuzz-URI/%2f.."           
       - "{{BaseURL}}/%5cfuzz-URI/%2f.."     
       - "{{BaseURL}}/?://X//fuzz-URI"
+      - "{{BaseURL}}/?:/%5cX//fuzz-URI"      
+      - "{{BaseURL}}/%5c://fuzz-URL"      
     matchers-condition: and
     matchers:
       - type: word
